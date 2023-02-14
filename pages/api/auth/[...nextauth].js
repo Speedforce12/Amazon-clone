@@ -14,26 +14,23 @@ export const authOptions = {
           err: "Credentials Failed";
         });
 
-        const user = Users.findOne({ email: credentials.email });
+       const result = await Users.findOne({ email: credentials.email });
 
-        if (!user) {
-          throw new Error("No User found in the database");
-        }
+       if (!result) {
+         throw new Error("No user Found with that email, Please Register");
+       }
 
-        const checkPassword = await compare(
-          credentials.password,
-          user.password
-        );
+       const checkPassword = await compare(
+         credentials.password,
+         result.password
+       );
 
-        if (!checkPassword) {
-          throw new Error("Password doesn't match Database password");
-        }
+       //  check password uniqueness
+       if (!checkPassword || result.email !== credentials.email) {
+         throw new Error("Password or Username mismatch");
+       }
 
-        if (credentials.email !== user.email) {
-          throw new Error("Email does not match email on database");
-        }
-
-        return user;
+       return result;
       },
     }),
     // ...add more providers here

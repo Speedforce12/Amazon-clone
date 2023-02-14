@@ -40,19 +40,23 @@ const register = () => {
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const onSubmit = async (data) => {
-    const res = await userApi.post("/auth/signup", data).catch((err) => { 
-      if (err.response?.status === 422) {
+
+    try {
+      const res = await userApi.post("/auth/signup", data) 
+      if (res.status === 201) {
+        router.push("/auth/login")
+      }
+    } catch (err) {
+        if (err.response?.status === 422) {
          toast.error("Email already registered")
        }
-    })
-    console.log(res);
+    }
     
   };
 

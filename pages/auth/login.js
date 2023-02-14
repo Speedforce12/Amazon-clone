@@ -8,6 +8,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { toast } from "react-hot-toast";
+import {  useRouter } from "next/router";
 
 const schema = yup.object({
   email: yup
@@ -18,6 +20,7 @@ const schema = yup.object({
 });
 
 const login = () => {
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -26,24 +29,24 @@ const login = () => {
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data) => {
-     const res = await signIn("credentials", {
+    await signIn("credentials", {
       email: data.email,
       password: data.password,
       redirect: false,
       callbackUrl: "/",
-    })
-    
-    if (res.ok === true) {
-        router.push(res.url)
-      };
-
-  
+    }).then(({ ok, error, url }) => {
+      if (ok) {
+        router.push(url);
+      } else {
+        console.log(error);
+      }
+    });
   };
 
   return (
     <div className='w-full bg-zinc-100 flex items-center justify-center'>
       <div className='flex items-center justify-center flex-col w-full'>
-        <Image src={logo} alt='' className='w-28 object-cover' priority/>
+        <Image src={logo} alt='' className='w-28 object-cover' priority />
         <form
           onSubmit={handleSubmit(onSubmit)}
           action=''

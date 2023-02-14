@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
     <div className={poppins.className}>
       {router.pathname !== "/auth/register" &&
         router.pathname !== "/auth/login" && <Header path={router.route} />}
-      <div>{children}</div>
+      <div className="flex-1">{children}</div>
       {router.pathname !== "/auth/login" &&
         (router.pathname !== "/auth/register" && (
           <Footer path={router.route} />

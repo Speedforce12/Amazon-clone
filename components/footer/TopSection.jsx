@@ -2,6 +2,9 @@ import Link from 'next/link';
 import React from 'react'
 
 const TopSection = () => {
+
+  
+   
   return (
     <div className=' flex items-center justify-center w-full flex-col'>
       <div className='border-b-[1px] border-t-[1px] border-gray-200  h-36 flex items-center justify-center flex-col space-y-2'>

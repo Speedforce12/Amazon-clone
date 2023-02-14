@@ -19,7 +19,7 @@ const BottomHeader = () => {
         <p className='font-bold capitalize'>All</p>
       </div>
 
-      <div className='h-full'>
+      <div className='h-full hidden xl:flex'>
         <ul className='flex items-center py-0.5'>
           <li className='hoverEffectBottom'>Clinic</li>
           <li className='hoverEffectBottom'>Buy Again</li>
@@ -35,12 +35,12 @@ const BottomHeader = () => {
       </div>
 
       {showSidebar ? (
-        <div className='w-full h-screen text-black fixed top-0 left-0 bg-black bg-opacity-60'>
+        <div className='w-full h-screen text-black fixed top-0 left-0 bg-black bg-opacity-60 z-50'>
           <motion.div className='w-full h-full relative' initial={{ opacity:0, x: "-100vh"}} animate={{opacity:1, x:0}} transition={{duration:0.4}} exit={{opacity:0}} >
-            <div className='w-[350px] bg-white h-full border border-black'>
+            <div className='xl:w-[350px] w-[270px] bg-white h-full border border-black'>
               <Link
                 href='#'
-                className='bg-amazon_light text-white py-4 h-14 w-[350px] sticky flex items-center px-6 gap-4'>
+                className='bg-amazon_light text-white py-4 h-14 xl:w-[350px] w-[270px] sticky flex items-center px-6 gap-4'>
                 <Image
                   src={avatarPic}
                   alt=''
@@ -57,7 +57,7 @@ const BottomHeader = () => {
               </div>
             </div>
             <div
-              className='absolute top-3 rounded-lg left-[370px] h-10 w-10 flex items-center justify-center cursor-pointer'
+              className='absolute top-3 rounded-lg xl:left-[370px]  left-[280px] h-10 w-10 flex items-center justify-center cursor-pointer'
               onClick={() => setShowSidebar(false)}>
               <MdClose className='text-3xl  text-white' />
             </div>

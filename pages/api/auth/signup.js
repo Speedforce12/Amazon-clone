@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       return res.status(404).json({ error: "No Data was provided" });
     }
 
-    const { username, email, password } = req.body;
+    const { email, password } = req.body;
 
     const existingUser = await Users.findOne({ email });
 
@@ -26,7 +26,6 @@ export default async function handler(req, res) {
     //   create a new user
     const NewUser = await Users.create({
       email,
-      username,
       password: await hash(password, 16),
     });
 

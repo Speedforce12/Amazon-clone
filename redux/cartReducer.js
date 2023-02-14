@@ -10,7 +10,7 @@ export const CartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, { payload }) => {
-      const existed = state.cart.find((item) => item._id === payload._id);
+      const existed = state.cart.find((item) => item.id === payload.id);
       if (existed) {
         existed.quantity++;
       } else {
@@ -20,14 +20,14 @@ export const CartSlice = createSlice({
     },
 
     increment: (state, { payload }) => {
-      const item = state.cart.find((item) => item._id === payload);
+      const item = state.cart.find((item) => item.id === payload);
       item.quantity++;
     },
 
     decrement: (state, { payload }) => {
-      const item = state.cart.find((item) => item._id === payload);
+      const item = state.cart.find((item) => item.id === payload);
       if (item.quantity === 1) {
-        const index = state.cart.findIndex((item) => item._id === payload);
+        const index = state.cart.findIndex((item) => item.id === payload);
         state.cart.splice(index, 1);
       } else {
         item.quantity--;
@@ -35,7 +35,7 @@ export const CartSlice = createSlice({
     },
 
     removeItem: (state, { payload }) => {
-      const index = state.cart.findIndex((item) => item._id === payload);
+      const index = state.cart.findIndex((item) => item.id === payload);
       state.cart.splice(index, 1);
     },
 

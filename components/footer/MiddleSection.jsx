@@ -18,9 +18,9 @@ const MiddleSection = () => {
           </div>
         </div>
       </div>
-      <div className='flex items-center w-full justify-center '>
+      <div className='flex items-center w-full justify-center'>
         <div className='flex items-center w-full justify-center py-8'>
-          <div className='flex items-center gap-10 justify-center'>
+          <div className='flex xl:flex-row items-center gap-10 justify-center flex-col'>
             <Image src={logo} alt='' className='object-cover w-24 mt-3' />
             <button className=' px-4 py-2 text-lightText flex items-center ring-1 ring-lightText rounded-md'>
               <TfiWorld className='text-sm text-lightText mr-2' />

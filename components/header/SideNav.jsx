@@ -3,7 +3,7 @@ import { AiOutlineRight } from "react-icons/ai";
 const SideNav = ({ sideItem }) => {
   return (
     <div className='border-b border-[1px] border-gray-300 w-full  p-6 text-black'>
-      <h1 className='text-black font-semibold capitalize text-xl'>
+      <h1 className='text-black font-semibold capitalize text-lg xl:text-xl'>
         {sideItem.title}
       </h1>
 

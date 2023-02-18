@@ -64,7 +64,7 @@ const Header = () => {
           <input
             type='text'
             placeholder='Search Amazon'
-            className='w-full h-ful p-2 focus:outline-none  placeholder:font-medium placeholder:text-gray-600 placeholder:text-md'
+            className='w-full h-ful p-2 focus:outline-none  placeholder:font-medium placeholder:text-gray-600 placeholder:text-md text-black'
           />
           <div className='bg-amazon_yellow p-2 flex items-center cursor-pointer rounded-tr-md rounded-br-md hover:bg-yellow-600 h-10 px-4'>
             <BsSearch className='text-xl text-amazon_blue' />
